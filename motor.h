@@ -1,31 +1,49 @@
-class Motor {
-
+class Motor 
+{
   public: 
 
   //Basic Focuser info - update based on your Focuser
-  enum EnableModes { ENABLE_NONE, ENABLE_LOW, ENABLE_HIGH };
+  static enum EnableModes { ENABLE_NONE, ENABLE_LOW, ENABLE_HIGH };
   
   Motor::Motor();
-  void setupPins();
 
   void step();
-  void setupMotor( int stepsPerRev, int microSteps );
+  void setupMotor( int stepsPerRev, int microSteps ) : _dirPin = 5, _stepPin = 6, _enPin = 2, _stepsPerRev = _stepsPerRev
+  {
+    init();
+  }
+
   void setupMotor( int dirPin, int stepPin, int enablePin, int enableMode ) : _dirPin(dirPin), _stepPin(stepPin), _enPin(enablePin), _stepPosition(position)
   {
     init();
   }
-   
+
+  int getMicrosteps()
+  {
+    return _microsteps;
+  }
+
+  int getStepsPerRev()
+  {
+    return _stepperrev;
+  }   
   
   private: 
   //Hardware Control motor pins
   int _stepPin = 0;
   int _dirPin = 0;
   int _enPin = 0;
-  int enableMode = EnableModes::ENABLE_NONE;
+  int _stepsPerRev = 0;
+  int _microSteps = 32;
+  int _enableMode = EnableModes::ENABLE_NONE
   
   protected: 
   void init();
-   
+}
+
+void Motor::step()
+{
+   _stepPin = 
 }
 
 void Motor::init(void) 

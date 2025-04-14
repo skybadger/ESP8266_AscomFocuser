@@ -19,12 +19,14 @@ String& setupFormBuilderDriver0Brightness( String& htmlForm );
 String& setupFormBuilderDriver0Positions( String& htmlForm );
 String& setupFormBuilderFooter( String& htmlForm );
 
+//
+
 //Device properties & methods
-//focuser​/{device_number}​/absolute
-​///focuser​/{device_number}​/ismoving
-​//focuser​/{device_number}​/maxincrement
-​//focuser​/{device_number}​/maxstep
-//focuser​/{device_number}​/position
+void handlerAbsoluteGet();
+​void handlerIsMovingGet();
+void handlerMaxIncrementGet();
+void handlerMaxStepGet();
+void handlerPositionGet();
 //focuser​/{device_number}​/stepsize
 //focuser​/{device_number}​/tempcomp
 ​//focuser​/{device_number}​/tempcomp
@@ -152,7 +154,7 @@ void handlerMaxStepGet(void)
 
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", };
     DynamicJsonBuffer jsonBuffer(256);
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
@@ -182,7 +184,7 @@ void handlerPositionGet(void)
     DynamicJsonBuffer jsonBuffer(256);
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { F("clientID"), F("ClientTransactionID"), };
+    String argToSearchFor[] = { F("ClientID"), F("ClientTransactionID"), };
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
       clientID = server.arg(argToSearchFor[0]).toInt();
@@ -212,7 +214,7 @@ void handlerCalibratorOnPut(void)
 
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", "brightness" };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", "brightness" };
     int input = 0;
     
     if( hasArgIC( argToSearchFor[0], server, false ) )

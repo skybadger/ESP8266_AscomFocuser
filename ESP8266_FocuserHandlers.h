@@ -66,7 +66,7 @@ void handlerAbsoluteGet(void)
     String message;
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", "absolute" };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", "absolute" };
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
       clientID = server.arg(argToSearchFor[0]).toInt();
@@ -92,7 +92,7 @@ void handlerFocuserIsMovingGet(void)
     String message;
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", };
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
       clientID = server.arg(argToSearchFor[0]).toInt();
@@ -118,7 +118,7 @@ void handlerFocuserModeGet(void)
 
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", };
     DynamicJsonBuffer jsonBuffer(256);
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
@@ -147,7 +147,7 @@ void handlerFocuserMaxIncrementGet(void)
 
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", };
     DynamicJsonBuffer jsonBuffer(256);
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
@@ -175,7 +175,7 @@ void handlerFocuserMaxStepGet(void)
 
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", };
     DynamicJsonBuffer jsonBuffer(256);
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
@@ -205,7 +205,7 @@ void handlerFocuserPositionGet(void)
     DynamicJsonBuffer jsonBuffer(256);
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { F("clientID"), F("ClientTransactionID"), };
+    String argToSearchFor[] = { F("ClientID"), F("ClientTransactionID"), };
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
       clientID = server.arg(argToSearchFor[0]).toInt();
@@ -318,7 +318,7 @@ void handlerFocuserTempCompAvailableGet(void)
 
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", };
     DynamicJsonBuffer jsonBuffer(256);
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
@@ -356,7 +356,7 @@ void handlerFocuserTempGet(void)
 
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", };
     DynamicJsonBuffer jsonBuffer(256);
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
@@ -444,7 +444,7 @@ void handlerFocuserMovePut(void)
 
     uint32_t clientID= -1;
     uint32_t transID = -1;
-    String argToSearchFor[] = { "clientID", "ClientTransactionID", "position" };
+    String argToSearchFor[] = { "ClientID", "ClientTransactionID", "position" };
     
     if( hasArgIC( argToSearchFor[0], server, false ) )
       clientID = server.arg(argToSearchFor[0]).toInt();
@@ -560,7 +560,7 @@ void handlerNotImplemented()
   int responseCode = 400;
   uint32_t clientID= -1;
   uint32_t transID = -1;
-  String argToSearchFor[] = { "clientID", "ClientTransactionID", };
+  String argToSearchFor[] = { "ClientID", "ClientTransactionID", };
   
   if( hasArgIC( argToSearchFor[0], server, false ) )
     clientID = server.arg(argToSearchFor[0]).toInt();
@@ -630,6 +630,4 @@ void handlerStatus(void)
     server.send(returnCode, F("application/json"), message);
     return;
 }
-
-
 #endif

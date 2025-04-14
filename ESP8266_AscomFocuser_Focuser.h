@@ -101,10 +101,10 @@ private:
   bool tempCompEnabled = false;
   const int tempOffsetsLength = 16;
   
-  //This should really be a list that can be sorted by termperature and have data points dynamically added/removedand sorted.
+  //This should really be a list that can be sorted by temperature and have data points dynamically added/removedand sorted.
   //also needs a means of interpolating and retrieving .  
   struct { float temp; int offset; } TempCompTuple;
-  TempCompTuples* tempCompTuples = nullptr;
+  TempCompTuple* tempCompTuples = nullptr;
   
   void addTempDatum( float temp, int position);
   bool sortTempData();
@@ -350,13 +350,19 @@ private:
   bool setResolution( int stepsPerRev, int gear, int microsteps, int degsPerRev )
   {
     int status = 0;
-    if ( stepsPerRev > 0 && stepsPerRev <= 400 && gear >=0 && microsteps >= 0 && microsteps <= 256 && degsPerRev >= 0.0 && degsPerRev <= 10.0 ) 
+    if ( stepsPerRev > 0 && 
+         stepsPerRev <= 400 && 
+         gear >=0 && 
+         microsteps >= 0 && 
+         microsteps <= 256 && 
+         degsPerRev >= 0.0 && 
+         degsPerRev <= 10.0 ) 
     {
       _degsPreRev  = degsPerRev;
       _stepsPerRevolution  = stepsPerRev; 
       _gear = gear;
       _microsteps = microsteps;    
-     _resolution = degsPerRev/( _stepsPerRevolution * _gear * _microsteps );
+      _resolution = degsPerRev/( _stepsPerRevolution * _gear * _microsteps );
     }
     else 
       status= -1;
@@ -544,7 +550,7 @@ private:
   //TODO List of tempCompTuples
   if ( _tempCompTuple != nullptr )
     _tempCompTuple = (TempCompTuple*) calloc( 16, sizeof (TempCompTuple)  );
-  for int i=0; i< tempOffsetsLength ; i++ )
+  for ( int i=0; i< tempOffsetsLength ; i++ )
   {
     // tempCompTuple[i].temperature = 0.0; 
     // tempCompTuple[i].position = 0.0; 
